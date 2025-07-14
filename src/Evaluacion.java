@@ -24,11 +24,12 @@ public class Evaluacion extends JFrame{
         lblInfo.setBounds(140, 50, 500, 30);
         add(lblInfo);
         
-        lblCont = new JLabel("Contador: V = " +" D = " +" E =  ");
-        lblCont.setBounds(175, 90, 500, 30);
+        lblCont = new JLabel("Contador: V = 0" +" D = 0" +" E =  0");
+        lblCont.setBounds(160, 90, 500, 30);
         add(lblCont);
         
         crearBotones();
+        
     }
     
     public void crearBotones(){
@@ -40,6 +41,7 @@ public class Evaluacion extends JFrame{
            public void actionPerformed(ActionEvent e){
                usuario.setOpcion(1);
                evaluarJugada();
+               actualizarEtiqueta();
            }
        });
        
@@ -51,8 +53,9 @@ public class Evaluacion extends JFrame{
             public void actionPerformed(ActionEvent e){
                 usuario.setOpcion(2);
                 evaluarJugada();
+                actualizarEtiqueta();
             }
-        });
+        }); 
         
         btnPapel = new JButton("PAPEL");
         btnPapel.setBounds(235, 450, 90, 30);
@@ -61,6 +64,7 @@ public class Evaluacion extends JFrame{
             public void actionPerformed(ActionEvent e){
                 usuario.setOpcion(3);
                 evaluarJugada();
+                actualizarEtiqueta();
             }
         });
         
@@ -69,7 +73,7 @@ public class Evaluacion extends JFrame{
         add(btnSalir);
         btnSalir.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                usuario.setOpcion(4);
+                System.exit(0);
             }
         });
     }
@@ -100,6 +104,10 @@ public class Evaluacion extends JFrame{
             D++;
             JOptionPane.showMessageDialog(null, "Derrota");
         }   
-        
     }
+    
+    public void actualizarEtiqueta(){
+            lblCont.setText("Contador: V = " + V +" D = "+D +" E = "+E);
+    }
+    
 }
